@@ -24,7 +24,9 @@ LST_DIR = lst
 # Change path to the tools according to your system configuration
 # DO NOT add trailing whitespace chars, they do matter !
 WINDOWSCS  ?= GNU Tools ARM Embedded\4.7 2012q4
-LINUXCS    ?= /home/ubuntu/gcc-arm-none-eabi-4_8-2013q4
+#LINUXCS    ?= /home/ubuntu/gcc-arm-none-eabi-4_8-2013q4
+LINUXCS    ?= 
+
 
 RMDIRS     := rm -rf
 RMFILES    := rm -rf
@@ -72,11 +74,11 @@ ifeq (clean,$(findstring clean, $(MAKECMDGOALS)))
   endif
 endif
 
-CC      = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-gcc$(QUOTE)
-LD      = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-ld$(QUOTE)
-AR      = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-ar$(QUOTE)
-OBJCOPY = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-objcopy$(QUOTE)
-DUMP    = $(QUOTE)$(TOOLDIR)/bin/arm-none-eabi-objdump$(QUOTE)
+CC      = arm-none-eabi-gcc
+LD      = arm-none-eabi-ld
+AR      = arm-none-eabi-ar
+OBJCOPY = arm-none-eabi-objcopy
+DUMP    = arm-none-eabi-objdump
 
 ####################################################################
 # Flags                                                            #
@@ -160,8 +162,8 @@ C_SRC +=  \
 
 s_SRC +=  \
 ../Device/EnergyMicro/EFM32ZG/Source/GCC/startup_efm32zg.s \
-../LemcUSB/usb_internal_bitbangusb_gcc.s \
-../LemcUSB/usb_internal_prot_handling_gcc.s
+../LemcUSB/usb_internal_bitbangusb.s \
+../LemcUSB/usb_internal_prot_handling.s
 
 
 
